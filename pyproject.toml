@@ -1,14 +1,44 @@
 [project]
 name = "sphinx-svcs"
 version = "0.1.0"
-description = "Add your description here"
+description = "Wire in a svcs registry and container with factories for Sphinx."
+license = "MIT"
+license-files = ["LICENSE"]
 readme = "README.md"
 authors = [
-    { name = "pauleveritt", email = "paul.everitt@jetbrains.com" }
+    { name = "pauleveritt", email = "pauleveritt@me.com" }
 ]
-requires-python = ">=3.12"
-dependencies = []
+requires-python = ">=3.10"
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Typing :: Typed",
+]
+keywords = [
+  "service locator",
+  "dependency injection",
+  "inversion of control",
+  "sphinx",
+]
+dependencies = [
+      "sphinx>=7.2.2",
+]
+
+[dependency-groups]
+dev = [
+  "hatchling",
+  "pytest",
+]
+docs = [
+  "myst-parser",
+  "furo>=2023.8.17",
+  "pytest",
+]
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.27.0"]
 build-backend = "hatchling.build"
