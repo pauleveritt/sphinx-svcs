@@ -26,6 +26,7 @@ keywords = [
 ]
 dependencies = [
       "sphinx>=7.2.2",
+      "svcs"
 ]
 
 [dependency-groups]
