@@ -11,6 +11,7 @@ from sphinx.application import (
 )
 
 from svcs import Registry
+from venusian import Scanner
 
 
 def run_hopscotch_setup(
@@ -59,6 +60,12 @@ def setup(app: Sphinx) -> None:
     site_registry.register_value(Sphinx, app)
     site_registry.register_value(SphinxConfig, app.config)
     site_registry.register_value(SphinxBuildEnvironment, app.env)
+
+    # Make a Venusian scanner and put it in the registry. Also, put
+    # the registry on the scanner so decorators can get to it, and
+    # thus get to sphinx_app etc.
+    scanner = Scanner(site_registry=site_registry )
+    site_registry.register_value(Scanner, scanner)
 
     # Look in conf.py for a `svcs_setup` function
     raw_config = getattr(app.config, "_raw_config")

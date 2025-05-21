@@ -9,6 +9,9 @@ This probably will be a common pattern for all Themester-supported targets. We w
 will be invoked last, after Sphinx stuff is added to the registry. I'll start by adding something to
 `test-sphinx-svcs-setup` that fails.
 
+I wanted to make `venusian` optional. But it's complicated. My fastest path to the end of all these packages is to make
+it mandatory and get the `Scanner` into the registry. The scanner will have the `site_registry`.
+
 # May 20
 
 Get started with a `uv init` targeting 3.10 or higher.

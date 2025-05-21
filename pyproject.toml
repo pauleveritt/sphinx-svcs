@@ -26,7 +26,8 @@ keywords = [
 ]
 dependencies = [
       "sphinx>=7.2.2",
-      "svcs"
+      "svcs",
+      "venusian>=3.1.1",
 ]
 
 [dependency-groups]
