@@ -1,4 +1,5 @@
 """Test the outermost extension setup."""
+
 import pytest
 from sphinx.testing.util import SphinxTestApp
 from svcs import Registry, Container
@@ -29,3 +30,13 @@ def test_builder_init(app: SphinxTestApp):
     assert isinstance(sphinx_config, SphinxConfig)
     sphinx_build_env = container.get(SphinxBuildEnvironment)
     assert isinstance(sphinx_build_env, SphinxBuildEnvironment)
+
+
+def test_svcs_setup(app: SphinxTestApp):
+    """See if test-sphinx-svcs-setup conf.py has a customization function."""
+    builder_init_setup(app)
+    site_registry: Registry = getattr(app, "site_registry")
+    container = Container(registry=site_registry)
+    assert IndentationError
+    fake_windows_error = container.get(IndentationError)
+    assert fake_windows_error == "Fake the IndentationError"

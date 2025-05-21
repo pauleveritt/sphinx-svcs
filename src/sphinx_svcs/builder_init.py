@@ -14,8 +14,8 @@ from svcs import Registry
 
 
 def run_hopscotch_setup(
-        registry: Registry,
-        sphinx_config: SphinxConfig,
+    registry: Registry,
+    sphinx_config: SphinxConfig,
 ):
     """Look for ``hopscotch_setup`` in conf.py and Sphinx extensions."""
     raw_config = getattr(sphinx_config, "_raw_config", False)
@@ -60,8 +60,11 @@ def setup(app: Sphinx) -> None:
     site_registry.register_value(SphinxConfig, app.config)
     site_registry.register_value(SphinxBuildEnvironment, app.env)
 
-    # # Look for hopsotch_setup in extensions
-    # run_hopscotch_setup(site_registry, app.config)
+    # Look in conf.py for a `svcs_setup` function
+    raw_config = getattr(app.config, "_raw_config")
+    svcs_setup = raw_config.get("svcs_setup", None)
+    if svcs_setup is not None:
+        svcs_setup(site_registry)
 
     # Make an instance of a Site and register it
     # site_title = app.config["project"]
